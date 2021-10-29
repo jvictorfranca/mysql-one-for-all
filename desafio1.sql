@@ -2,20 +2,36 @@ DROP DATABASE IF EXISTS SpotifyClone;
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
 USE SpotifyClone;
 
+
+
 DROP TABLE IF EXISTS user_profile;
 CREATE TABLE user_profile(
 user_id INT PRIMARY KEY AUTO_INCREMENT,
 user_name VARCHAR(50) NOT NULL,
-age INT NOT NULL,
-`account` VARCHAR(50) NOT NULL,
-account_price DOUBLE NOT NULL
+age INT NOT NULL
 );
 
-INSERT INTO user_profile(user_name, age, `account`, account_price) 
-VALUES ('Thati',23, 'gratuito', 0),
-('Cintia',35, 'familiar', 7.99),
-('Bill',20, 'universitário', 5.99),
-('Roger',45, 'gratuito',0);
+INSERT INTO user_profile(user_name, age) 
+VALUES ('Thati',23),
+('Cintia',35),
+('Bill',20),
+('Roger',45);
+
+
+DROP TABLE IF EXISTS user_plans;
+CREATE TABLE user_plans(
+user_id INT NOT NULL,
+`account` VARCHAR(50) NOT NULL,
+account_price DOUBLE NOT NULL,
+CONSTRAINT PRIMARY KEY(user_id),
+FOREIGN KEY (user_id) REFERENCES user_profile(user_id)
+);
+
+INSERT INTO user_plans( user_id,`account`, account_price) 
+VALUES (1,'gratuito', 0),
+(2, 'familiar', 7.99),
+(3, 'universitário', 5.99),
+(4, 'gratuito',0);
 
 
 DROP TABLE IF EXISTS artists;
