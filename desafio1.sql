@@ -3,35 +3,35 @@ CREATE DATABASE IF NOT EXISTS SpotifyClone;
 USE SpotifyClone;
 
 
+DROP TABLE IF EXISTS user_plans;
+CREATE TABLE user_plans(
+ plan_id INT AUTO_INCREMENT PRIMARY KEY,
+`account` VARCHAR(50) NOT NULL,
+account_price DOUBLE NOT NULL
+);
+
+INSERT INTO user_plans( `account`, account_price) 
+VALUES ('gratuito', 0),
+('familiar', 7.99),
+('universitário', 5.99);
 
 DROP TABLE IF EXISTS user_profile;
 CREATE TABLE user_profile(
 user_id INT PRIMARY KEY AUTO_INCREMENT,
 user_name VARCHAR(50) NOT NULL,
-age INT NOT NULL
+plan_id INT NOT NULL,
+age INT NOT NULL,
+FOREIGN KEY (plan_id) REFERENCES user_plans(plan_id)
 );
 
-INSERT INTO user_profile(user_name, age) 
-VALUES ('Thati',23),
-('Cintia',35),
-('Bill',20),
-('Roger',45);
+INSERT INTO user_profile(user_name, age, plan_id) 
+VALUES ('Thati',23, 1),
+('Cintia',35, 2),
+('Bill',20, 3),
+('Roger',45, 1);
 
 
-DROP TABLE IF EXISTS user_plans;
-CREATE TABLE user_plans(
-user_id INT NOT NULL,
-`account` VARCHAR(50) NOT NULL,
-account_price DOUBLE NOT NULL,
-CONSTRAINT PRIMARY KEY(user_id),
-FOREIGN KEY (user_id) REFERENCES user_profile(user_id)
-);
 
-INSERT INTO user_plans( user_id,`account`, account_price) 
-VALUES (1,'gratuito', 0),
-(2, 'familiar', 7.99),
-(3, 'universitário', 5.99),
-(4, 'gratuito',0);
 
 
 DROP TABLE IF EXISTS artists;
