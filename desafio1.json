@@ -2,7 +2,7 @@
   "coluna_usuario": "user_name",
   "tabela_que_contem_usuario": "user_profile",
   "coluna_plano": "account",
-  "tabela_que_contem_plano": "user_profile",
+  "tabela_que_contem_plano": "user_plans",
   "coluna_historico_de_reproducoes": "song_id",
   "tabela_que_contem_historico_de_reproducoes": "user_songs_history",
   "coluna_seguindo_artistas": "user_id",
