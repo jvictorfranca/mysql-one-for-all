@@ -1,3 +1,3 @@
 CREATE VIEW estatisticas_musicais AS
-    SELECT SELECT COUNT(song_name) AS "cancoes",COUNT(DISTINCT artist_id) AS "artistas", COUNT(distinct album_id) AS "albuns"
+     SELECT COUNT(song_name) AS "cancoes",COUNT(DISTINCT artist_id) AS "artistas", COUNT(distinct album_id) AS "albuns"
      FROM songs;
